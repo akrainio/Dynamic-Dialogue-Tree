@@ -7,14 +7,19 @@ class Dialog:
     
     def getAvailableActions(self):
         """
-            Returns a list of strings with the names of available actions.
+            Returns a list of strings with the names of available actions
         """
         pass
     
     def submitAction(self, action):
         """
             Takes an action as a string and executes it if valid
-            If valid, it returns the chosen response, otherwise returns an empty string
+        """
+        pass
+    
+    def getResponse(self):
+        """
+            Returns the AI's current string response
         """
         pass
     
