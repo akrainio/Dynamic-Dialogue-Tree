@@ -1,4 +1,4 @@
-class Conversation:
+class Dialog:
     def __init__(self, data):
         """
             Takes the conversation data structure created using json.load()
