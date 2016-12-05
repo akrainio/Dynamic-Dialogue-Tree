@@ -27,7 +27,8 @@
 				"text": "Got a call from a friend...",
 				"function": "return coop() - .2",
 				"flags": [
-					"about_friend"
+					"call",
+					"friend"
 				]
 			},
 			"sly": {
@@ -39,7 +40,8 @@
 				"text": "Step off.",
 				"function": "return intense()",
 				"flags": [
-					"lay_down_law"
+					"chicken",
+					"boundaries"
 				]
 			}
 		},
@@ -47,17 +49,16 @@
 			"aggressive"
 		]
 	},
-
 	"Name?": {
 		"preconditions": [],
 		"repeatable": "False",
-		"text": "What's your name, son?",
+		"text": "What's your name?",
 		"response": {
 			"coop": {
 				"text": "I'm Cooper.",
-				"function": "return coop() - .2",
+				"function": "return coop() + .1",
 				"flags": [
-					"establish_trust"
+					"get_name"
 				]
 			},
 			"sly": {
@@ -69,7 +70,7 @@
 				"text": "None of your damn buisness.",
 				"function": "return intense()",
 				"flags": [
-					"lay_down_law"
+					"boundaries"
 				]
 			}
 		},
@@ -77,100 +78,151 @@
 			"disarming"
 		]
 	},
-
-
-	"Friend?": {
-		"preconditions": [],
+	"Establish Trust": {
+		"preconditions": [
+			"get_name"
+		],
 		"repeatable": "False",
+		"text": "I'm on your side, Cooper. I just need you to trust me and point me in the right direction.",
+		"response": {
+			"coop": {
+				"text": "Okay, I think I can do that.",
+				"function": "return coop() - .3",
+				"flags": [
+					"max_trust"
+				]
+			},
+			"sly": {
+				"text": "Yeah, serve and protect, right? Whatever you say, pal.",
+				"function": "return sly()",
+				"flags": [
+					"history"
+				]
+			},
+			"intense": {
+				"text": "Trust is what got me into this mess!",
+				"function": "return intense() + .1",
+				"flags": [
+					"betrayed"
+				]
+			}
+		},
+		"helpers": [
+			"fake",
+			"disarming"
+		]
+	},
+	"Lay Down Law": {
+		"preconditions": [
+			"boundaries"
+		],
+		"repeatable": "False",
+		"text": "I'm in charge here! You better start answering questions if you don't want us to hang this whole thing on you.",
+		"response": {
+			"coop": {
+				"text": "Okay, okay, what do you want to know?",
+				"function": "return coop() + .2",
+				"flags": [
+					"established_authority"
+				]
+			},
+			"sly": {
+				"text": "You're not fooling anyone with that big act, buddy.",
+				"function": "return sly()",
+				"flags": [
+					"attack"
+				]
+			},
+			"intense": {
+				"text": "So arrest me. I've got nothing left to say.",
+				"function": "return intense()",
+				"flags": [
+					"chicken"
+				]
+			}
+		},
+		"helpers": [
+			"assertive",
+			"aggressive"
+		]
+	},
+	"Trusted someone?": {
+		"preconditions": [
+			"betrayed",
+			"get_name"
+		],
+		"repeatable": "False",
+		"text": "Who let you down, Cooper?",
+		"response": {
+			"coop": {
+				"text": "A friend, or so I thought.",
+				"function": "return coop()",
+				"flags": [
+					"friend"
+				]
+			},
+			"sly": {
+				"text": "A real snake, a bit like you.",
+				"function": "return sly()",
+				"flags": [
+					"history",
+					"friend"
+				]
+			},
+			"intense": {
+				"text": "No, I'm not talking. He'll kill me too!",
+				"function": "return intense()",
+				"flags": [
+					"dangerous"
+				]
+			}
+		},
+		"helpers": [
+			"presumptuous",
+			"assertive"
+		]
+	},
+	"Friend?": {
+		"preconditions": [
+			"friend"
+		],
+		"repeatable": "True",
 		"text": "Tell me about your friend.",
 		"response": {
 			"coop": {
 				"text": "",
-				"function": "return coop() - .2",
-				"flags": []
+				"function": "return coop()",
+				"flags": [
+					""
+				]
 			},
 			"sly": {
-				"text": "You won't find him in your database, if that's what you're asking.",
+				"text": "He's not on any police database, if that's what you're asking.",
 				"function": "return sly()",
-				"flags": []
+				"flags": [
+					"elusive"
+				]
 			},
 			"intense": {
 				"text": "This was all his fault. He did this to me.",
 				"function": "return intense()",
-				"flags": []
+				"flags": [
+					"dangerous"
+				]
 			}
 		},
 		"helpers": [
-			"disarming"
+			"neutral",
+			"
 		]
-	},
-	
-	
-	"Antagonize": {
-		"text": {
-			"How could anyone be so incompetent?",
-			"Someone's paying you to be this useless?"
-		},
-		"helpers": {
-			"sadistic",
-			"purposeless"
-		}
-	},
-	"Calm": {
-		"preconditions": {
-			"anger": .5
-		}
-		"text": {
-			"Let's both take a step back and maybe a deep breath too, eh?",
-			"Can we just cool things down a bit please?"
-		},
-		"helpers": {
-			"patronizing",
-			"conciliatory"
-		}
-	},
-	"Irritate": {
-
-	},
-	"Bargain": {
-		"options": {
-			"malicious": {
-				"text": "
-				"function": "return malicious()"
-				"flags": null
-			}
-			"angry": {
-				"text": "No, no, I'm not letting you off that easy. There's more at stake here."
-				"function": "return angry()-malicious()"
-				"flags": "more_at_stake"
-			}
-			"patient": {
-				"text":
-				"flags":
-			}
-			"satisfied": {
-				"text":
-				"flags":
-			}
-		},
-		"helpers": {
-			"persuasive",
-			"conciliatory"
-		}
-	},
-	"Reason": {
-		"preconditions": {
-			"maliciousity": .5
-		}
-		"text": {
-			
-		}
-		"helpers": {
-			"conciliatory"
-		}
 	}
 },
 "Helpers": {
+	"neutral": {
+		"coop": "-.1",
+		"intense": ".1"
+	},
+	
 	"sadistic": {
 		"angry": .2,
 		"malicious": .2
