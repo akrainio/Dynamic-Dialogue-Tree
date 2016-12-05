@@ -85,7 +85,7 @@ class Response:
         """
             Evaluates this response based on the NPC's state
         """
-        return eval(self.value, wme.npcState)
+        return eval(self.value, {"__builtins__" : None }, wme.npcState)
 
 class Action:
     """
