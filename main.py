@@ -14,7 +14,7 @@ def get_choice(choices):
     user_choice = None
     while user_choice is None:
         try:
-            user_input = input("How would you like to respond?")
+            user_input = input("Choice: ")
             user_choice = int(user_input)
             if choices.__len__() < user_choice or user_choice < 1:
                 print('Error, try again')
