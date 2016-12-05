@@ -190,10 +190,11 @@
 		"text": "Tell me about your friend.",
 		"response": {
 			"coop": {
-				"text": "",
+				"text": "He's dangerous. Should've never gotten mixed up with him in the first place. You won't find him neither. Keeps a tight shift.",
 				"function": "return coop()",
 				"flags": [
-					""
+					"elusive",
+					"dangerous"
 				]
 			},
 			"sly": {
@@ -212,8 +213,7 @@
 			}
 		},
 		"helpers": [
-			"neutral",
-			"
+			"neutral"
 		]
 	}
 },
