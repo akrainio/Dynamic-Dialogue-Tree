@@ -1,4 +1,22 @@
 {
+"Personalities": {
+	"Polite": {
+		"coop": 2.0,
+		"sly": 0.2,
+		"intense": 0.5
+	},
+	"Impatient": {
+		"coop": 0.2,
+		"sly": 1.0,
+		"intense": 2.0
+	},
+	"Cautious": {
+		"coop": 0.5,
+		"sly": 2.0,
+		"intense": 0.5
+	}
+
+},
 "Actions": {
 	"Alibi?": {
 		"preconditions": [],
@@ -53,6 +71,33 @@
 				"flags": [
 					"lay_down_law"
 				]
+			}
+		},
+		"helpers": [
+			"disarming"
+		]
+	},
+
+
+	"Friend?": {
+		"preconditions": [],
+		"repeatable": "False",
+		"text": "Tell me about your friend.",
+		"response": {
+			"coop": {
+				"text": "",
+				"function": "return coop() - .2",
+				"flags": []
+			},
+			"sly": {
+				"text": "You won't find him in your database, if that's what you're asking.",
+				"function": "return sly()",
+				"flags": []
+			},
+			"intense": {
+				"text": "This was all his fault. He did this to me.",
+				"function": "return intense()",
+				"flags": []
 			}
 		},
 		"helpers": [
