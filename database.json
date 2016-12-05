@@ -1,35 +1,64 @@
 {
 "Actions": {
 	"Alibi?": {
-		"preconditions": {},
-		"repeatable": True,
+		"preconditions": [],
+		"repeatable": "True",
 		"text": "What are you doing at the scene of the crime?",
 		"response": {
 			"coop": {
 				"text": "Got a call from a friend...",
 				"function": "return coop() - .2",
-				"flags": {
-					"about_friend",
-				},
+				"flags": [
+					"about_friend"
+				]
 			},
 			"sly": {
 				"text": "Nothing in particular. Am I being detained?",
 				"function": "return sly()",
-				"flags": {},
+				"flags": []
 			},
 			"intense": {
 				"text": "Step off.",
 				"function": "return intense()",
-				"flags": {
-					"lay_down_law",
-				}
+				"flags": [
+					"lay_down_law"
+				]
 			}
 		},
-		"helpers": {
-			"aggressive",
-		},
+		"helpers": [
+			"aggressive"
+		]
 	},
-	
+
+	"Name?": {
+		"preconditions": [],
+		"repeatable": "False",
+		"text": "What's your name, son?",
+		"response": {
+			"coop": {
+				"text": "I'm Cooper.",
+				"function": "return coop() - .2",
+				"flags": [
+					"establish_trust"
+				]
+			},
+			"sly": {
+				"text": "What's it to you?",
+				"function": "return sly()",
+				"flags": []
+			},
+			"intense": {
+				"text": "None of your damn buisness.",
+				"function": "return intense()",
+				"flags": [
+					"lay_down_law"
+				]
+			}
+		},
+		"helpers": [
+			"disarming"
+		]
+	},
 	
 	
 	"Antagonize": {
