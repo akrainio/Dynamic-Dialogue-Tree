@@ -1,5 +1,37 @@
 {
 "Actions": {
+	"Alibi?": {
+		"preconditions": {},
+		"repeatable": True,
+		"text": "What are you doing at the scene of the crime?",
+		"response": {
+			"coop": {
+				"text": "Got a call from a friend...",
+				"function": "return coop() - .2",
+				"flags": {
+					"about_friend",
+				},
+			},
+			"sly": {
+				"text": "Nothing in particular. Am I being detained?",
+				"function": "return sly()",
+				"flags": {},
+			},
+			"intense": {
+				"text": "Step off.",
+				"function": "return intense()",
+				"flags": {
+					"lay_down_law",
+				}
+			}
+		},
+		"helpers": {
+			"aggressive",
+		},
+	},
+	
+	
+	
 	"Antagonize": {
 		"text": {
 			"How could anyone be so incompetent?",
