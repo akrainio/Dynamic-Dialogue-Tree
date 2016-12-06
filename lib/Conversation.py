@@ -19,8 +19,13 @@ class Personality:
         self.selected = ""
     
     def parse(self, data):
-        for name, values in data.items():
-            if 
+        try:
+            enabled = data["Enabled"]
+            self.map = data[enabled]
+        except KeyError:
+            print("Error while parsing personality")
+            return False
+        return True
     
     def apply(self, values):
         """
