@@ -15,7 +15,7 @@ class Personality:
         Contains the set of available NPC personalities along with the currently selected one
     """
     def __init__(self):
-        self.personalities = {}
+        self.personality = {}
         self.selected = ""
     
     def parse(self, data):
@@ -24,9 +24,9 @@ class Personality:
         """
         try:
             self.selected = data["Enabled"]
-            self.personalities = data[self.selected]
+            self.personality = data[self.selected]
         except KeyError:
-            print("Error while parsing personality")
+            print("Error while parsing personality.")
             return False
         return True
     
@@ -34,7 +34,9 @@ class Personality:
         """
             Apply personality modifiers to NPC state values
         """
-        pass
+        for name, value in self.personality:
+            values[name] *= value
+        return values
 
 class WorkingMemory:
     """
