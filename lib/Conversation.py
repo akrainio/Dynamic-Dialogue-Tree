@@ -80,7 +80,7 @@ class WorkingMemory:
         """
         try:
             self.npcState = data["state"]
-            self.cues = set(data["cues"])
+            self.cues = set(data["flags"])
         except KeyError:
             print("Error while parsing working memory.")
             return False
@@ -119,8 +119,8 @@ class Response:
         """
         try:
             self.text = data["text"]
-            self.value = data["value"]
-            self.unlockedCues = data["cues"]
+            self.value = data["function"]
+            self.unlockedCues = data["flags"]
         except KeyError:
             print("Error while parsing responses.")
             return False
@@ -149,11 +149,11 @@ class Action:
         """
         try:
             self.text = data["text"]
-            self.requiredCues = data["cues"]
-            self.canRepeat = data["canRepeat"] == "True"
+            self.requiredCues = data["preconditions"]
+            self.canRepeat = data["repeatable"] == "True"
             self.helpers = data["helpers"]
             self.responses = []
-            for responseData in data["responses"]:
+            for responseData in data["response"]:
                 newResponse = Response()
                 if newResponse.parse(responseData):
                     self.responses.append(newResponse)
