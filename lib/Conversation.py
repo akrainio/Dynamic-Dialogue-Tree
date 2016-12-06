@@ -4,12 +4,36 @@ import math
 
 class Helpers:
     """
-        
+        suh dude
     """
-    #TODO: implement helpers
-    def __init__(self):
-        pass
-    
+
+    # TODO: implement helpers
+    def __init__(self, data):
+        self.helperMap = {}
+
+    def parse(self, data):
+        try:
+            self.helperMap = data["Helpers"]
+        except KeyError:
+            print("Helpers: parse: KeyError: No key called \"Helpers\"")
+            return False
+        return True
+
+    def getStateChange(self, helpers):
+        netDelta = {}
+        for helper in helpers:
+            try:
+                stateDeltas = self.helperMap[helper]
+            except KeyError:
+                print("Helpers: getHelp: KeyError: No helper called \"" + helper + "\"")
+                return False
+            for key, value in stateDeltas.items():
+                if key in netDelta:
+                    netDelta[key] += value
+                else:
+                    netDelta[key] = value
+            return netDelta
+
 class Personality:
     """
         Contains the set of available NPC personalities along with the currently selected one
@@ -17,7 +41,7 @@ class Personality:
     def __init__(self):
         self.personality = {}
         self.selected = ""
-    
+
     def parse(self, data):
         """
             Parse personality from json data
@@ -29,7 +53,7 @@ class Personality:
             print("Error while parsing personality.")
             return False
         return True
-    
+
     def apply(self, values):
         """
             Apply personality modifiers to NPC state values
@@ -38,16 +62,18 @@ class Personality:
             values[name] *= value
         return values
 
+
 class WorkingMemory:
     """
         Represents the current working memory for the dialog
         Includes used actions, NPC state, and unlocked social cues
     """
+
     def __init__(self):
         self.usedActions = set()
         self.npcState = {}
         self.cues = set()
-        
+
     def parse(self, data):
         """
             Parse working memory from json data
@@ -104,7 +130,7 @@ class Response:
         """
             Evaluates this response based on the NPC's state
         """
-        return eval(self.value, {"__builtins__" : None }, wme.npcState)
+        return eval(self.value, {"__builtins__": None}, wme.npcState)
 
 class Action:
     """
@@ -160,11 +186,11 @@ class Action:
         """
         # check action can be performed
         if self.canPerform(wme):
-            #TODO: adjust npc state using helpers and personality
-            
+            # TODO: adjust npc state using helpers and personality
+
             # add action to set of used actions
-            wme.addUsedAction(self)            
-            
+            wme.addUsedAction(self)
+
             # choose most appropriate response using eval
             bestResponse = None
             bestResponseValue = -math.inf
@@ -189,13 +215,13 @@ class Dialog:
         """
             Takes the dialog data structure created using json.load()
         """
-        self.active = True        
-        
+        self.active = True
+
         try:
             self.wme = WorkingMemory()
             if not self.wme.parse(data["Start"]):
                 self.active = False
-            
+
             self.actions = []
             for actionData in data["Actions"]:
                 newAction = Action()
@@ -218,11 +244,11 @@ class Dialog:
         for action in self.actions:
             if action.canPerform(self.wme):
                 self.availableActions[action.text] = action
-        
+
         if not self.availableActions:
             self.active = False
             self.response = self.gameover
-        
+
     def isActive(self):
         """
             Returns True if the dialog is ongoing
@@ -261,5 +287,5 @@ class Dialog:
         """
             Returns dialog debugging information
         """
-        #TODO: implement debug info
+        # TODO: implement debug info
         return ""

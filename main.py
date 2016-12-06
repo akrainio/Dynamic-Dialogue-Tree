@@ -5,8 +5,8 @@ from lib import Conversation
 
 def display_choices(choices):
     """
-    Takes a list of strings, and displays them
-    as enumerated dialog options.
+        Takes a list of strings, and displays them
+        as enumerated dialog options.
     """
     for choice in enumerate(choices):
         print(str(choice[0] + 1) + ": " + choice[1])
@@ -14,10 +14,10 @@ def display_choices(choices):
 
 def get_choice(choices, conversation):
     """
-    Takes a list as input, corresponding element
-    of that list after getting a valid integer input
-    from player. Inputting 'debug' or 'd' prints
-    debug information on the state of the conversation
+        Takes a list as input, corresponding element
+        of that list after getting a valid integer input
+        from player. Inputting 'debug' or 'd' prints
+        debug information on the state of the conversation
     """
     user_choice = None
     while user_choice is None:
