@@ -67,7 +67,7 @@
 				"flags": []
 			},
 			"intense": {
-				"text": "None of your damn buisness.",
+				"text": "None of your damn business.",
 				"function": "return intense()",
 				"flags": [
 					"boundaries"
@@ -220,6 +220,31 @@
 	"Problems with the law?": {
 		"preconditions": [
 			"history"
+		],
+		"repeatable": "False",
+		"text": "You've brushed with the law before, I'm guessing.",
+		"response": {
+			"coop": {
+				"text": "I've been in and out for years. Everyone out here has.",
+				"function": "return coop()",
+				"flags": [
+				]
+			},
+			"sly": {
+				"text": "This isn't the first time I'll go down for something I didn't do.",
+				"function": "return sly()",
+				"flags": [
+				]
+			},
+			"intense": {
+				"text": "",
+				"function": "return intense()",
+				"flags": [
+				]
+			}
+		},
+		"helpers": [
+
 		]
 	}
 },
