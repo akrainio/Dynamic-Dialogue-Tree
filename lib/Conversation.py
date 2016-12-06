@@ -12,15 +12,15 @@ class Helpers:
     
 class Personality:
     """
-        
+        Contains the set of available NPC personalities along with the currently selected one
     """
-    #TODO: implement personality
     def __init_(self):
         self.personalities = {}
         self.selected = ""
     
     def parse(self, data):
-        pass
+        for name, values in data.items():
+            if 
     
     def apply(self, values):
         """
@@ -246,4 +246,4 @@ class Dialog:
             Returns dialog debugging information
         """
         #TODO: implement debug info
-        pass
+        return ""
