@@ -204,7 +204,9 @@ class Dialog:
                 else:
                     self.active = False
             
-            self.response = data["Opening"]
+            self.opening = data["Opening"]
+            self.gameover = data["Game Over"]
+            self.response = self.opening
         except KeyError:
             print("Error while parsing dialog.")
             self.active = False
@@ -216,6 +218,10 @@ class Dialog:
         for action in self.actions:
             if action.canPerform(self.wme):
                 self.availableActions[action.text] = action
+        
+        if not self.availableActions:
+            self.active = False
+            self.response = self.gameover
         
     def isActive(self):
         """
