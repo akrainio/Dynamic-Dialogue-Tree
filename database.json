@@ -1,5 +1,16 @@
 {
+"Start": {
+	"state": {
+		"coop": 0.3,
+		"sly": 0.5,
+		"intense": 0.4
+	},
+	"flags": []
+}
+
 "Personalities": {
+	"Enabled": "Cautious",
+	
 	"Polite": {
 		"coop": 2.0,
 		"sly": 0.2,
@@ -17,6 +28,7 @@
 	}
 
 },
+
 "Actions": {
 	"Alibi?": {
 		"preconditions": [],
@@ -254,7 +266,9 @@
 		"intense": ".1"
 	}
 },
-"Opening": {
 
-}
+"Opening": "",
+
+"Game Over": ""
+
 }
