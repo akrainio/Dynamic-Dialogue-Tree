@@ -14,14 +14,17 @@ class Personality:
     """
         Contains the set of available NPC personalities along with the currently selected one
     """
-    def __init_(self):
+    def __init__(self):
         self.personalities = {}
         self.selected = ""
     
     def parse(self, data):
+        """
+            Parse personality from json data
+        """
         try:
-            enabled = data["Enabled"]
-            self.map = data[enabled]
+            self.selected = data["Enabled"]
+            self.personalities = data[self.selected]
         except KeyError:
             print("Error while parsing personality")
             return False
