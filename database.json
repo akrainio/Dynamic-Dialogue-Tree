@@ -29,6 +29,12 @@
 },
 
 "Actions": {
+	"Attempt to rile": {
+		"repeatable": "True"
+	},
+	"Attempt to calm": {
+		"repeatable": "True"
+	},
 	"Alibi?": {
 		"preconditions": [],
 		"repeatable": "True",
