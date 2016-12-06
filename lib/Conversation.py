@@ -1,4 +1,3 @@
-from set import Set
 import math
 
 #TODO: Split into multiple files maybe
@@ -17,6 +16,16 @@ class Personality:
     """
     #TODO: implement personality
     def __init_(self):
+        self.personalities = {}
+        self.selected = ""
+    
+    def parse(self, data):
+        pass
+    
+    def apply(self, values):
+        """
+            Apply personality modifiers to NPC state values
+        """
         pass
 
 class WorkingMemory:
@@ -25,9 +34,9 @@ class WorkingMemory:
         Includes used actions, NPC state, and unlocked social cues
     """
     def __init__(self):
-        self.usedActions = Set()
+        self.usedActions = set()
         self.npcState = {}
-        self.cues = Set()
+        self.cues = set()
         
     def parse(self, data):
         """
@@ -35,7 +44,7 @@ class WorkingMemory:
         """
         try:
             self.npcState = data["state"]
-            self.cues = Set(data["cues"])
+            self.cues = set(data["cues"])
         except KeyError:
             print("Error while parsing working memory.")
             return False
@@ -224,6 +233,7 @@ class Dialog:
         
         self.response = chosenAction.perform(self.wme)
         self.__updateAvailableActions()
+        return True
     
     def getResponse(self):
         """
