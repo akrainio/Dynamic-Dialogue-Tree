@@ -193,7 +193,7 @@
 				"text": "He's dangerous. Should've never gotten mixed up with him in the first place. You won't find him neither. Keeps a tight shift.",
 				"function": "return coop()",
 				"flags": [
-					"elusive",
+					"how_find",
 					"dangerous"
 				]
 			},
@@ -201,19 +201,25 @@
 				"text": "He's not on any police database, if that's what you're asking.",
 				"function": "return sly()",
 				"flags": [
-					"elusive"
+					"how_find"
 				]
 			},
 			"intense": {
-				"text": "This was all his fault. He did this to me.",
+				"text": "This is all his fault. He did this to me.",
 				"function": "return intense()",
 				"flags": [
-					"dangerous"
+					"dangerous",
+					"did_what"
 				]
 			}
 		},
 		"helpers": [
 			"neutral"
+		]
+	},
+	"Problems with the law?": {
+		"preconditions": [
+			"history"
 		]
 	}
 },
@@ -221,50 +227,9 @@
 	"neutral": {
 		"coop": "-.1",
 		"intense": ".1"
-	},
-	
-	"sadistic": {
-		"angry": .2,
-		"malicious": .2
-	},
-	"persuasive": {
-		"patient": .2,
-		"malicious": -.1
-	},
-	"patronizing": {
-		"malicious": .2,
-		"angry": .1
-	},
-	"annoying": {
-		"angry": .2
-	},
-	"purposeless": {
-		"malicious": .1
-	},
-	"conciliatory": {
-		"patient": .2,
-		"angry": -.1
-	}
-},
-"Flags": {
-	"more_at_stake": {
-		"unlocks": {
-			
-		}
 	}
 },
 "Opening": {
-	"Hello, you are speaking with #name#, how can I help you today?",
-	"Hi, I'm calling to ask about the price of my plan. It went up $30 last month, and I'd like to know why.",
-	"Okay #formal#, let me just pull up your records.",
-	"...*keyboard clacking*...",
-	"I see, it looks like your plan was automatically upgraded last month to a premium account. This is the cause of the price hike, and the premium service you are currently receiving.",
-	"Okay, got it. I'd like to downgrade back to regular service please.",
-	"I'm afraid that's not possible #formal#. That plan was eliminated last month. All regular plans have been promoted.",
-	"Hmm, okay. And you said I'm receiving premium service now? I haven't noticed any changes at all.",
-	"Yes, that's correct #formal#, you now receive premium service.",
-	"Okay, that's all well and good, #name#. But I want my old price back.",
-	"And I'm afraid that's just not possible #formal#.",
-	"\n\n"
+
 }
 }
