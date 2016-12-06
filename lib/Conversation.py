@@ -4,10 +4,9 @@ import math
 
 class Helpers:
     """
-        suh dude
+        Contains a map of all helpers
     """
 
-    # TODO: implement helpers
     def __init__(self, data):
         self.helperMap = {}
 
