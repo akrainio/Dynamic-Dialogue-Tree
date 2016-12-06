@@ -26,7 +26,6 @@
 		"sly": 2.0,
 		"intense": 0.5
 	}
-
 },
 
 "Actions": {
@@ -37,7 +36,7 @@
 		"response": {
 			"coop": {
 				"text": "Got a call from a friend...",
-				"function": "return coop() - .2",
+				"function": "coop - .2",
 				"flags": [
 					"call",
 					"friend"
@@ -45,12 +44,12 @@
 			},
 			"sly": {
 				"text": "Nothing in particular. Am I being detained?",
-				"function": "return sly()",
+				"function": "sly",
 				"flags": []
 			},
 			"intense": {
 				"text": "Step off.",
-				"function": "return intense()",
+				"function": "intense",
 				"flags": [
 					"chicken",
 					"boundaries"
@@ -68,19 +67,19 @@
 		"response": {
 			"coop": {
 				"text": "I'm Cooper.",
-				"function": "return coop() + .1",
+				"function": "coop + .1",
 				"flags": [
 					"get_name"
 				]
 			},
 			"sly": {
 				"text": "What's it to you?",
-				"function": "return sly()",
+				"function": "sly",
 				"flags": []
 			},
 			"intense": {
 				"text": "None of your damn business.",
-				"function": "return intense()",
+				"function": "intense",
 				"flags": [
 					"boundaries"
 				]
@@ -99,21 +98,21 @@
 		"response": {
 			"coop": {
 				"text": "Okay, I think I can do that.",
-				"function": "return coop() - .3",
+				"function": "coop - .3",
 				"flags": [
 					"max_trust"
 				]
 			},
 			"sly": {
 				"text": "Yeah, serve and protect, right? Whatever you say, pal.",
-				"function": "return sly()",
+				"function": "sly",
 				"flags": [
 					"history"
 				]
 			},
 			"intense": {
 				"text": "Trust is what got me into this mess!",
-				"function": "return intense() + .1",
+				"function": "intense + .1",
 				"flags": [
 					"betrayed"
 				]
@@ -133,21 +132,21 @@
 		"response": {
 			"coop": {
 				"text": "Okay, okay, what do you want to know?",
-				"function": "return coop() + .2",
+				"function": "coop + .2",
 				"flags": [
 					"established_authority"
 				]
 			},
 			"sly": {
 				"text": "You're not fooling anyone with that big act, buddy.",
-				"function": "return sly()",
+				"function": "sly",
 				"flags": [
 					"attack"
 				]
 			},
 			"intense": {
 				"text": "So arrest me. I've got nothing left to say.",
-				"function": "return intense()",
+				"function": "intense",
 				"flags": [
 					"chicken"
 				]
@@ -168,14 +167,14 @@
 		"response": {
 			"coop": {
 				"text": "A friend, or so I thought.",
-				"function": "return coop()",
+				"function": "coop",
 				"flags": [
 					"friend"
 				]
 			},
 			"sly": {
 				"text": "A real snake, a bit like you.",
-				"function": "return sly()",
+				"function": "sly",
 				"flags": [
 					"history",
 					"friend"
@@ -183,7 +182,7 @@
 			},
 			"intense": {
 				"text": "No, I'm not talking. He'll kill me too!",
-				"function": "return intense()",
+				"function": "intense",
 				"flags": [
 					"dangerous"
 				]
@@ -203,7 +202,7 @@
 		"response": {
 			"coop": {
 				"text": "He's dangerous. Should've never gotten mixed up with him in the first place. You won't find him neither. Keeps a tight shift.",
-				"function": "return coop()",
+				"function": "coop",
 				"flags": [
 					"how_find",
 					"dangerous"
@@ -211,14 +210,14 @@
 			},
 			"sly": {
 				"text": "He's not on any police database, if that's what you're asking.",
-				"function": "return sly()",
+				"function": "sly",
 				"flags": [
 					"how_find"
 				]
 			},
 			"intense": {
 				"text": "This is all his fault. He did this to me.",
-				"function": "return intense()",
+				"function": "intense",
 				"flags": [
 					"dangerous",
 					"did_what"
@@ -238,19 +237,19 @@
 		"response": {
 			"coop": {
 				"text": "I've been in and out for years. Everyone out here has.",
-				"function": "return coop()",
+				"function": "coop",
 				"flags": [
 				]
 			},
 			"sly": {
 				"text": "This isn't the first time I'll go down for something I didn't do.",
-				"function": "return sly()",
+				"function": "sly",
 				"flags": [
 				]
 			},
 			"intense": {
 				"text": "",
-				"function": "return intense()",
+				"function": "intense",
 				"flags": [
 				]
 			}
@@ -262,13 +261,38 @@
 },
 "Helpers": {
 	"neutral": {
-		"coop": "-.1",
-		"intense": ".1"
+		"coop": -0.1,
+		"intense": 0.1
+	},
+	
+	"fake": {
+		"sly": 0.1,
+		"intense": -0.1
+	},
+	
+	"presumptuous": {
+		"sly": 0.05,
+		"intense": 0.1
+	},
+	
+	"aggressive": {
+		"coop": 0.3,
+		"intense": 0.4
+	},
+	
+	"assertive": {
+		"coop": 0.2,
+		"intense": 0.1
+	},
+	
+	"disarming": {
+		"sly": -0.2,
+		"intense": -0.2
 	}
 },
 
-"Opening": "",
+"Opening": "You are a police detective interviewing a suspect at the scene of a murder.",
 
-"Game Over": ""
+"Game Over": "The suspect pleads the fifth and refuses to give anymore information."
 
 }
