@@ -12,15 +12,6 @@ def display_choices(choices):
         print(str(choice[0] + 1) + ": " + choice[1])
 
 
-def say(npc_name, sentence):
-    """
-    Takes an npc's name and his/her dialog as
-    strings, and prints them in a conversational
-    format.
-    """
-    print(npc_name + ': ' + sentence)
-
-
 def get_choice(choices, conversation):
     """
     Takes a list as input, corresponding element
@@ -48,12 +39,12 @@ if __name__ == '__main__':
     with open("database.json") as f:
         data = json.load(f)
     conversation = Conversation.Dialog(data)
-    say('Cooper', conversation.getResponse())
-    while conversation.is_active:
+    print(conversation.getResponse())
+    while conversation.isActive():
         choices = conversation.getAvailableActions()
         display_choices(choices)
         action_index = get_choice(choices, conversation) - 1
-        say('Cooper', '...')
+        print('Cooper: ...')
         time.sleep(1)
         conversation.submitAction(choices[action_index])
-        say('Cooper', conversation.getResponse)
+        print(conversation.getResponse)
