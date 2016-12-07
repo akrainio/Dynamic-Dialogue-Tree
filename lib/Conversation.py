@@ -259,8 +259,12 @@ class Dialog:
         for action in self.actions:
             if action.canPerform(self.wme):
                 self.availableActions[action.text] = action
-
-        if not self.availableActions:
+        
+        gameIsOver = True
+        for action in self.availableActions.values():
+            if not action.canRepeat:
+                gameIsOver = False
+        if gameIsOver:
             self.active = False
             self.response = self.gameover
 
