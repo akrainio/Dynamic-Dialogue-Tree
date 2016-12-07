@@ -1,4 +1,5 @@
 import json
+import random
 import time
 from lib import Conversation
 
@@ -45,6 +46,6 @@ if __name__ == '__main__':
         display_choices(choices)
         action_index = get_choice(choices, conversation) - 1
         print('\n... ', end="")
-        time.sleep(1)
+        time.sleep(random.uniform(0.8, 1.2))
         conversation.submitAction(choices[action_index])
         print(conversation.getResponse())
