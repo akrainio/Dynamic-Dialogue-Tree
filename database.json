@@ -331,8 +331,7 @@
 		"preconditions": [
 			"history",
 			"friend",
-			"betrayed",
-			""
+			"betrayed"
 		],
 		"repeatable": "False",
 		"text": "Let me guess, your pal made you an offer you couldn't refuse and now has got some real dirt on you",
