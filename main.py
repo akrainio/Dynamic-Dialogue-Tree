@@ -9,7 +9,7 @@ def display_choices(choices):
         as enumerated dialog options.
     """
     for choice in enumerate(choices):
-        print(str(choice[0] + 1) + ": " + choice[1])
+        print("\n", str(choice[0] + 1) + ": " + choice[1])
 
 
 def get_choice(choices, conversation):
@@ -22,9 +22,9 @@ def get_choice(choices, conversation):
     user_choice = None
     while user_choice is None:
         try:
-            user_input = input("Choice: ")
+            user_input = input("\nChoice: ")
             if user_input == 'debug' or user_input == 'd':
-                print(conversation.getDebugInfo())
+                print("\n", conversation.getDebugInfo())
             else:
                 user_choice = int(user_input)
                 if choices.__len__() < user_choice or user_choice < 1:
@@ -44,7 +44,7 @@ if __name__ == '__main__':
         choices = conversation.getAvailableActions()
         display_choices(choices)
         action_index = get_choice(choices, conversation) - 1
-        print('Cooper: ...')
+        print('\n... ', end="")
         time.sleep(1)
         conversation.submitAction(choices[action_index])
         print(conversation.getResponse())
