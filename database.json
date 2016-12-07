@@ -12,19 +12,19 @@
 	"Enabled": "Neutral",
 	
 	"Polite": {
-		"coop": 2.0,
-		"sly": 0.2,
-		"intense": 0.5
+		"coop": 1.1,
+		"sly": 0.9,
+		"intense": 0.8
 	},
 	"Impatient": {
-		"coop": 0.2,
+		"coop": 0.8,
 		"sly": 1.0,
-		"intense": 2.0
+		"intense": 1.2
 	},
 	"Cautious": {
-		"coop": 0.5,
-		"sly": 2.0,
-		"intense": 0.5
+		"coop": 0.9,
+		"sly": 1.2,
+		"intense": 0.9
 	},
 	"Neutral": {
 		"coop": 1,
@@ -131,7 +131,7 @@
 		"response": {
 			"coop": {
 				"text": "I'm Cooper.",
-				"function": "coop + .1",
+				"function": "coop",
 				"flags": [
 					"get_name",
 					"start"
@@ -180,7 +180,7 @@
 			},
 			"intense": {
 				"text": "Trust is what got me into this mess!",
-				"function": "intense + .1",
+				"function": "intense",
 				"flags": [
 					"betrayed"
 				]
@@ -200,7 +200,7 @@
 		"response": {
 			"coop": {
 				"text": "Okay, okay, I'll cooperate.",
-				"function": "coop + .2",
+				"function": "coop",
 				"flags": [
 					"established_authority"
 				]
@@ -345,7 +345,7 @@
 		"response": {
 			"coop": {
 				"text": "Yeah, something like that. I'll tell you what I know as long as you keep that lunatic away from me.",
-				"function": "coop",
+				"function": "coop - .1",
 				"flags": [
                   "win_coop"
                 ]
@@ -388,7 +388,7 @@
 			},
 			"intense": {
 				"text": "This is insane! I won't go down for this, okay? I'll tell you what I know, dammit!",
-				"function": "intense",
+				"function": "intense - .1",
 				"flags": [
                   "win_intense"
                 ]
@@ -448,7 +448,7 @@
 			},
 			"sly": {
 				"text": "Right, tell me more about your 'excellent' witness protection.",
-				"function": "sly + 0.1",
+				"function": "sly",
 				"flags": []
 			},
 			"intense": {
