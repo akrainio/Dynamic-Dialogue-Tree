@@ -232,7 +232,8 @@
 				"text": "A friend, or so I thought.",
 				"function": "coop",
 				"flags": [
-					"friend"
+					"friend",
+					"history"
 				]
 			},
 			"sly": {
@@ -361,6 +362,36 @@
 		"helpers": [
 			"neutral",
 			"assertive"
+		]
+	},
+	"Reassure": {
+		"preconditions": [
+			"dangerous",
+			"friend",
+			"betrayed"
+		],
+		"repeatable": "False",
+		"text": "Don't about your friend, he can't hurt you when we're around.",
+		"response": {
+			"coop": {
+				"text": "Alright... but uh, I'm not scared of him.",
+				"function": "coop",
+				"flags": []
+			},
+			"sly": {
+				"text": "Right, tell me more about your \'excellent\' witness protection.",
+				"function": "sly + 0.1",
+				"flags": []
+			},
+			"intense": {
+				"text": "Who says I'm afraid of him? He should be afraid of me!",
+				"function": "intense",
+				"flags": []
+			}
+		},
+		"helpers": [
+			"disarming",
+			"fatherly"
 		]
 	}
 },
