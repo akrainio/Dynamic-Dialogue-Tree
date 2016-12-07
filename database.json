@@ -29,6 +29,60 @@
 },
 
 "Actions": {
+	"Attempt to rile": {
+		"preconditions": [
+			"start"
+		],
+		"repeatable": "True",
+		"text": "You're going away for a long time for what you've done.",
+		"response": {
+			"coop": {
+				"text": "What? No, you've got it all wrong.",
+				"function": "coop",
+				"flags": []
+			},
+			"sly": {
+				"text": "I know what you're trying to do and it's not working.",
+				"function": "sly",
+				"flags": []
+			},
+			"intense": {
+				"text": "Don't push me!",
+				"function": "intense",
+				"flags": []
+			}
+		},
+		"helpers": [
+			"more_aggressive"
+		]
+	},
+	"Attempt to calm": {
+		"preconditions": [
+			"start"
+		],
+		"repeatable": "True",
+		"text": "Hey, listen. You cooperate, things'll turn out okay for you. Understand?",
+		"response": {
+			"coop": {
+				"text": "Yeah, yeah. Okay, what do you need to know.",
+				"function": "coop",
+				"flags": []
+			},
+			"sly": {
+				"text": "That won't work on me. You cops all think you're pretty smart, huh?",
+				"function": "sly",
+				"flags": []
+			},
+			"intense": {
+				"text": "No, I think this time is the end of the line. I think you know it, too.",
+				"function": "intense",
+				"flags": []
+			}
+		},
+		"helpers": [
+			"fatherly"
+		]
+	},
 	"Alibi?": {
 		"preconditions": [],
 		"repeatable": "True",
@@ -39,20 +93,25 @@
 				"function": "coop - .2",
 				"flags": [
 					"call",
-					"friend"
+					"friend",
+					"start"
 				]
 			},
 			"sly": {
 				"text": "Nothing in particular. Am I being detained?",
 				"function": "sly",
-				"flags": []
+				"flags": [
+					"start",
+					"history"
+				]
 			},
 			"intense": {
 				"text": "Step off.",
 				"function": "intense",
 				"flags": [
 					"chicken",
-					"boundaries"
+					"boundaries",
+					"start"
 				]
 			}
 		},
@@ -69,19 +128,23 @@
 				"text": "I'm Cooper.",
 				"function": "coop + .1",
 				"flags": [
-					"get_name"
+					"get_name",
+					"start"
 				]
 			},
 			"sly": {
 				"text": "What's it to you?",
 				"function": "sly",
-				"flags": []
+				"flags": [
+					"start"
+				]
 			},
 			"intense": {
 				"text": "None of your damn business.",
 				"function": "intense",
 				"flags": [
-					"boundaries"
+					"boundaries",
+					"start"
 				]
 			}
 		},
@@ -238,24 +301,65 @@
 			"coop": {
 				"text": "I've been in and out for years. Everyone out here has.",
 				"function": "coop",
-				"flags": [
-				]
+				"flags": []
 			},
 			"sly": {
 				"text": "This isn't the first time I'll go down for something I didn't do.",
 				"function": "sly",
 				"flags": [
+					"set_up",
+					"did_what"
 				]
 			},
 			"intense": {
-				"text": "",
+				"text": "Listen, I didn't do it, okay!?",
 				"function": "intense",
 				"flags": [
+					"friend",
+					"did_what"
 				]
 			}
 		},
 		"helpers": [
-
+			"neutral",
+			"assertive"
+		]
+	},
+	"Conjecture": {
+		"preconditions": [
+			"history",
+			"friend",
+			"betrayed",
+			""
+		],
+		"repeatable": "False",
+		"text": "You've brushed with the law before, I'm guessing.",
+		"response": {
+			"coop": {
+				"text": "I've been in and out for years. Everyone out here has.",
+				"function": "coop",
+				"flags": []
+			},
+			"sly": {
+				"text": "This isn't the first time I'll go down for something I didn't do.",
+				"function": "sly",
+				"flags": [
+					"set_up",
+					"did_what"
+				]
+			},
+			"intense": {
+				"text": "Listen, I didn't do it, okay!?",
+				"function": "intense",
+				"flags": [
+					"friend",
+					"did_what"
+				]
+			}
+		},
+		"helpers": [
+			"neutral",
+			"assertive"
 		]
 	}
 },
@@ -266,7 +370,7 @@
 	},
 	
 	"fake": {
-		"sly": 0.1,
+		"sly": 0.2,
 		"intense": -0.1
 	},
 	
@@ -279,6 +383,11 @@
 		"coop": 0.3,
 		"intense": 0.4
 	},
+
+	"more_aggressive": {
+		"coop": 0.2,
+		"intense": 0.5
+	},
 	
 	"assertive": {
 		"coop": 0.2,
@@ -288,6 +397,11 @@
 	"disarming": {
 		"sly": -0.2,
 		"intense": -0.2
+	},
+
+	"fatherly": {
+		"coop": 0.3,
+		"sly": 0.1
 	}
 },
 
