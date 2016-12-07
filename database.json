@@ -33,7 +33,7 @@
 		"preconditions": [
 			"start"
 		],
-		"repeatable": "True",
+		"repeatable": "False",
 		"text": "You're going away for a long time for what you've done.",
 		"response": {
 			"coop": {
@@ -60,7 +60,7 @@
 		"preconditions": [
 			"start"
 		],
-		"repeatable": "True",
+		"repeatable": "False",
 		"text": "Hey, listen. You cooperate, things'll turn out okay for you. Understand?",
 		"response": {
 			"coop": {
@@ -85,7 +85,7 @@
 	},
 	"Alibi?": {
 		"preconditions": [],
-		"repeatable": "True",
+		"repeatable": "False",
 		"text": "What are you doing at the scene of the crime?",
 		"response": {
 			"coop": {
@@ -260,7 +260,7 @@
 		"preconditions": [
 			"friend"
 		],
-		"repeatable": "True",
+		"repeatable": "False",
 		"text": "Tell me about your friend.",
 		"response": {
 			"coop": {
@@ -268,7 +268,8 @@
 				"function": "coop",
 				"flags": [
 					"how_find",
-					"dangerous"
+					"dangerous",
+					"betrayed"
 				]
 			},
 			"sly": {
@@ -283,7 +284,8 @@
 				"function": "intense",
 				"flags": [
 					"dangerous",
-					"did_what"
+					"did_what",
+					"betrayed"
 				]
 			}
 		},
@@ -333,15 +335,15 @@
 			""
 		],
 		"repeatable": "False",
-		"text": "You've brushed with the law before, I'm guessing.",
+		"text": "Let me guess, your pal made you an offer you couldn't refuse and now has got some real dirt on you",
 		"response": {
 			"coop": {
-				"text": "I've been in and out for years. Everyone out here has.",
+				"text": "Suh?.",
 				"function": "coop",
 				"flags": []
 			},
 			"sly": {
-				"text": "This isn't the first time I'll go down for something I didn't do.",
+				"text": "Dude?",
 				"function": "sly",
 				"flags": [
 					"set_up",
@@ -349,7 +351,7 @@
 				]
 			},
 			"intense": {
-				"text": "Listen, I didn't do it, okay!?",
+				"text": "Yee!?",
 				"function": "intense",
 				"flags": [
 					"friend",
