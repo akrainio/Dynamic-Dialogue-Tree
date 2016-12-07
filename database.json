@@ -332,13 +332,15 @@
 		"preconditions": [
 			"history",
 			"friend",
-			"betrayed"
+			"betrayed",
+			"did_what",
+			"sly_win"
 		],
 		"repeatable": "False",
-		"text": "Let me guess, your pal made you an offer you couldn't refuse and now has got some real dirt on you",
+		"text": "Let me guess, your pal made you an offer you couldn't refuse and now he's got some real dirt on you.",
 		"response": {
 			"coop": {
-				"text": "Suh?.",
+				"text": "Alright, alright. .",
 				"function": "coop",
 				"flags": []
 			},
@@ -356,6 +358,42 @@
 				"flags": [
 					"friend",
 					"did_what"
+				]
+			}
+		},
+		"helpers": [
+			"neutral",
+			"assertive"
+		]
+	},
+	"Friend did What": {
+		"preconditions": [
+			"friend",
+			"betrayed",
+			"did_what"
+		],
+		"repeatable": "False",
+		"text": "So what exactly did your friend do, anyway?",
+		"response": {
+			"coop": {
+				"text": "He told me to meet him here or else...",
+				"function": "coop",
+				"flags": [
+					"coop_win"
+				]
+			},
+			"sly": {
+				"text": "Let's just say he was gonna make one of my problems disappear",
+				"function": "sly",
+				"flags": [
+					"sly_win"
+				]
+			},
+			"intense": {
+				"text": "You're asking some dangerous questions.",
+				"function": "intense",
+				"flags": [
+					"intense_win"
 				]
 			}
 		},

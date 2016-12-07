@@ -31,6 +31,8 @@ def get_choice(choices, conversation):
                 if choices.__len__() < user_choice or user_choice < 1:
                     print('Error, try again')
                     user_choice = None
+                else:
+                    print("\n" + choices[user_input])
         except ValueError:
             print('Error, try again')
     return user_choice
