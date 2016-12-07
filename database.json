@@ -199,7 +199,7 @@
 		"text": "I'm in charge here! You better start answering questions if you don't want us to hang this whole thing on you.",
 		"response": {
 			"coop": {
-				"text": "Okay, okay, what do you want to know?",
+				"text": "Okay, okay, I'll cooperate.",
 				"function": "coop + .2",
 				"flags": [
 					"established_authority"
@@ -353,24 +353,50 @@
 			"sly": {
 				"text": "I bet you think you're pretty clever, connecting the dots like that? Guess what, you're wrong.",
 				"function": "sly",
-				"flags": [
-					"set_up",
-					"did_what"
-				]
+				"flags": []
 			},
 			"intense": {
-				"text": "Yee!?",
+				"text": "Are you trying to be funny man?! I'll show you the dirt.",
 				"function": "intense",
-				"flags": [
-					"friend",
-					"did_what"
-				]
+				"flags": []
 			}
 		},
 		"helpers": [
-			"neutral",
-			"assertive"
-		]
+            "presumptuous"
+        ]
+	},
+    "Bad cop": {
+		"preconditions": [
+			"history",
+			"friend",
+			"betrayed",
+			"did_what",
+			"intense_win"
+		],
+		"repeatable": "False",
+		"text": "You will go down for this. There's more than enough circumstantial evidence here to put you away for the rest of your life.",
+		"response": {
+			"coop": {
+				"text": "Haven't you been listening to me? For the last time, this wasn't me!",
+				"function": "coop",
+				"flags": []
+			},
+			"sly": {
+				"text": "You can't play me like that.",
+				"function": "sly",
+				"flags": []
+			},
+			"intense": {
+				"text": "This is insane! I won't go down for this, okay? I'll tell you what I know, dammit!",
+				"function": "intense",
+				"flags": [
+                  "win"
+                ]
+			}
+		},
+		"helpers": [
+            "presumptuous"
+        ]
 	},
 	"Friend did What": {
 		"preconditions": [
@@ -391,9 +417,7 @@
 			"sly": {
 				"text": "Let's just say he was gonna make one of my problems disappear.",
 				"function": "sly",
-				"flags": [
-					"sly_win"
-				]
+				"flags": []
 			},
 			"intense": {
 				"text": "You're asking some dangerous questions.",
@@ -480,7 +504,11 @@
 	"fatherly": {
 		"coop": 0.11,
 		"sly": 0.08
-	}
+	},
+
+    "super_neutral": {
+        "coop": 0
+    }
 },
 
 "Opening": "You are a police detective interviewing a suspect at the scene of a murder.",
