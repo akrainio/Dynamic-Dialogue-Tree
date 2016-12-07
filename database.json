@@ -69,7 +69,7 @@
 		"text": "Hey, listen. You cooperate, things'll turn out okay for you. Understand?",
 		"response": {
 			"coop": {
-				"text": "Yeah, yeah. Okay, what do you need to know.",
+				"text": "Yeah, yeah. Okay, what do you need to know?",
 				"function": "coop",
 				"flags": []
 			},
@@ -338,18 +338,20 @@
 			"friend",
 			"betrayed",
 			"did_what",
-			"sly_win"
+			"coop_win"
 		],
 		"repeatable": "False",
 		"text": "Let me guess, your pal made you an offer you couldn't refuse and now he's got some real dirt on you.",
 		"response": {
 			"coop": {
-				"text": "Alright, alright. .",
+				"text": "Yeah, something like that. I'll tell you what I know as long as you keep that lunatic away from me.",
 				"function": "coop",
-				"flags": []
+				"flags": [
+                  "win"
+                ]
 			},
 			"sly": {
-				"text": "Dude?",
+				"text": "I bet you think you're pretty clever, connecting the dots like that? Guess what, you're wrong.",
 				"function": "sly",
 				"flags": [
 					"set_up",
@@ -387,7 +389,7 @@
 				]
 			},
 			"sly": {
-				"text": "Let's just say he was gonna make one of my problems disappear",
+				"text": "Let's just say he was gonna make one of my problems disappear.",
 				"function": "sly",
 				"flags": [
 					"sly_win"
@@ -413,7 +415,7 @@
 			"betrayed"
 		],
 		"repeatable": "False",
-		"text": "Don't about your friend, he can't hurt you when we're around.",
+		"text": "Don't worry about your friend, he can't hurt you when we're around.",
 		"response": {
 			"coop": {
 				"text": "Alright... but uh, I'm not scared of him.",
@@ -483,6 +485,8 @@
 
 "Opening": "You are a police detective interviewing a suspect at the scene of a murder.",
 
-"Game Over": "The suspect pleads the fifth and refuses to give any more information."
+"Game Over": "The suspect pleads the fifth and refuses to give any more information.",
+
+"Won": "The suspect has agreed to work with the police. Hopefully justice prevails."
 
 }

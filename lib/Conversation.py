@@ -84,6 +84,7 @@ class WorkingMemory:
         try:
             self.npcState = data["state"]
             self.cues = set(data["flags"])
+
         except KeyError:
             print("Error while parsing working memory.")
             return False
@@ -247,6 +248,7 @@ class Dialog:
             
             self.opening = data["Opening"]
             self.gameover = data["Game Over"]
+            self.gameover_won = data["Won"]
             self.response = self.opening
         except KeyError:
             print("Error while parsing dialog.")
@@ -259,14 +261,21 @@ class Dialog:
         for action in self.actions:
             if action.canPerform(self.wme):
                 self.availableActions[action.text] = action
-        
+
+        won = False
         gameIsOver = True
         for action in self.availableActions.values():
             if not action.canRepeat:
                 gameIsOver = False
+        if "win" in self.wme.cues:
+            gameIsOver = True
+            won = True
         if gameIsOver:
             self.active = False
-            self.response = self.gameover
+            if won:
+                self.response = self.gameover_won
+            else:
+                self.response = self.gameover
 
     def isActive(self):
         """

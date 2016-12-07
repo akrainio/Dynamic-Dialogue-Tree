@@ -32,7 +32,7 @@ def get_choice(choices, conversation):
                     print('Error, try again')
                     user_choice = None
                 else:
-                    print("\nYou: " + choices[user_choice])
+                    print("\nYou: " + choices[user_choice - 1])
         except ValueError:
             print('Error, try again')
     return user_choice
