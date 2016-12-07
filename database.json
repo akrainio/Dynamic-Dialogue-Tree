@@ -166,7 +166,7 @@
 		"response": {
 			"coop": {
 				"text": "Okay, I think I can do that.",
-				"function": "coop - .3",
+				"function": "coop - .1",
 				"flags": [
 					"max_trust"
 				]
@@ -345,7 +345,7 @@
 		"response": {
 			"coop": {
 				"text": "Yeah, something like that. I'll tell you what I know as long as you keep that lunatic away from me.",
-				"function": "coop - .1",
+				"function": "coop",
 				"flags": [
                   "win_coop"
                 ]
