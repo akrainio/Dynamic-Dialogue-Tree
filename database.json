@@ -9,7 +9,7 @@
 },
 
 "Personalities": {
-	"Enabled": "Cautious",
+	"Enabled": "Neutral",
 	
 	"Polite": {
 		"coop": 2.0,
@@ -25,6 +25,11 @@
 		"coop": 0.5,
 		"sly": 2.0,
 		"intense": 0.5
+	},
+	"Neutral": {
+		"coop": 1,
+		"sly": 1,
+		"intense": 1
 	}
 },
 
@@ -294,7 +299,7 @@
 			"neutral"
 		]
 	},
-	"Problems with the law?": {
+	"Problems with law?": {
 		"preconditions": [
 			"history"
 		],
@@ -318,7 +323,6 @@
 				"text": "Listen, I didn't do it, okay!?",
 				"function": "intense",
 				"flags": [
-					"friend",
 					"did_what"
 				]
 			}
@@ -435,43 +439,45 @@
 },
 "Helpers": {
 	"neutral": {
-		"coop": -0.1,
-		"intense": 0.1
+		"coop": -0.11,
+		"intense": 0.11
 	},
 	
 	"fake": {
-		"sly": 0.2,
-		"intense": -0.1
+		"sly": 0.23,
+		"intense": -0.08
 	},
 	
 	"presumptuous": {
 		"sly": 0.05,
-		"intense": 0.1
+		"intense": 0.12
 	},
 	
 	"aggressive": {
-		"coop": 0.3,
-		"intense": 0.4
+		"coop": 0.09,
+		"sly": 0.15,
+		"intense": 0.22
 	},
 
 	"more_aggressive": {
-		"coop": 0.2,
-		"intense": 0.5
+		"coop": 0.05,
+		"sly": 0.19,
+		"intense": 0.28
 	},
 	
 	"assertive": {
-		"coop": 0.2,
-		"intense": 0.1
+		"coop": 0.21,
+		"intense": 0.14
 	},
 	
 	"disarming": {
-		"sly": -0.2,
-		"intense": -0.2
+		"sly": -0.27,
+		"intense": -0.26
 	},
 
 	"fatherly": {
-		"coop": 0.3,
-		"sly": 0.1
+		"coop": 0.11,
+		"sly": 0.08
 	}
 },
 
