@@ -47,4 +47,4 @@ if __name__ == '__main__':
         print('Cooper: ...')
         time.sleep(1)
         conversation.submitAction(choices[action_index])
-        print(conversation.getResponse)
+        print(conversation.getResponse())

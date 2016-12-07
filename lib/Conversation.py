@@ -1,13 +1,11 @@
 import math
 
-#TODO: Split into multiple files maybe
-
 class Helpers:
     """
         Contains a map of all helpers
     """
 
-    def __init__(self, data):
+    def __init__(self):
         self.helperMap = {}
 
     def parse(self, data):
@@ -25,13 +23,13 @@ class Helpers:
                 stateDeltas = self.helperMap[helper]
             except KeyError:
                 print("Helpers: getHelp: KeyError: No helper called \"" + helper + "\"")
-                return False
+                return None
             for key, value in stateDeltas.items():
                 if key in netDelta:
                     netDelta[key] += value
                 else:
                     netDelta[key] = value
-            return netDelta
+        return netDelta
 
 class Personality:
     """
@@ -46,8 +44,9 @@ class Personality:
             Parse personality from json data
         """
         try:
-            self.selected = data["Enabled"]
-            self.personality = data[self.selected]
+            personalityData = data["Personalities"]
+            self.selected = personalityData["Enabled"]
+            self.personality = personalityData[self.selected]
         except KeyError:
             print("Error while parsing personality.")
             return False
@@ -57,8 +56,9 @@ class Personality:
         """
             Apply personality modifiers to NPC state values
         """
-        for name, value in self.personality:
-            values[name] *= value
+        for name, multiplier in self.personality.items():
+            if name in values:
+                values[name] *= multiplier
         return values
 
 
@@ -72,6 +72,10 @@ class WorkingMemory:
         self.usedActions = set()
         self.npcState = {}
         self.cues = set()
+        
+    def __str__(self):
+        return "NPC State:\n" + str(self.npcState) + \
+            "\n\nSocial Cues:\n" + str(self.cues)
 
     def parse(self, data):
         """
@@ -142,6 +146,9 @@ class Action:
         self.helpers = []
         self.responses = []
     
+    def __str__(self):
+        return self.text
+    
     def parse(self, data):
         """
             Parse action from json data
@@ -152,7 +159,7 @@ class Action:
             self.canRepeat = data["repeatable"] == "True"
             self.helpers = data["helpers"]
             self.responses = []
-            for responseData in data["response"]:
+            for responseData in data["response"].values():
                 newResponse = Response()
                 if newResponse.parse(responseData):
                     self.responses.append(newResponse)
@@ -179,13 +186,16 @@ class Action:
         
         return True
     
-    def perform(self, wme):
+    def perform(self, wme, helperData, personality):
         """
             Perform this action if possible
         """
         # check action can be performed
         if self.canPerform(wme):
-            # TODO: adjust npc state using helpers and personality
+            stateChanges = helperData.getStateChange(self.helpers)
+            personality.apply(stateChanges)
+            for state, change in stateChanges.items():
+                wme.adjustState(state, change)
 
             # add action to set of used actions
             wme.addUsedAction(self)
@@ -200,11 +210,11 @@ class Action:
                     bestResponseValue = value
             
             # add response's unlocked social cues
-            for unlockedCue in bestResponse[0].unlockedCues:
+            for unlockedCue in bestResponse.unlockedCues:
                 wme.addCue(unlockedCue)
             
             # return response text
-            return bestResponse[0].text
+            return bestResponse.text
 
 class Dialog:
     """
@@ -222,12 +232,18 @@ class Dialog:
                 self.active = False
 
             self.actions = []
-            for actionData in data["Actions"]:
+            for actionData in data["Actions"].values():
                 newAction = Action()
                 if newAction.parse(actionData):
                     self.actions.append(newAction)
                 else:
                     self.active = False
+                    
+            self.helpers = Helpers()
+            self.helpers.parse(data)
+            
+            self.personality = Personality()
+            self.personality.parse(data)
             
             self.opening = data["Opening"]
             self.gameover = data["Game Over"]
@@ -258,7 +274,7 @@ class Dialog:
         """
             Returns a list of strings with the names of available actions
         """
-        return self.availableActions.keys()
+        return list(self.availableActions.keys())
     
     def submitAction(self, action):
         """
@@ -272,7 +288,7 @@ class Dialog:
         if not chosenAction.canPerform(self.wme):
             return False
         
-        self.response = chosenAction.perform(self.wme)
+        self.response = chosenAction.perform(self.wme, self.helpers, self.personality)
         self.__updateAvailableActions()
         return True
     
@@ -286,5 +302,4 @@ class Dialog:
         """
             Returns dialog debugging information
         """
-        # TODO: implement debug info
-        return ""
+        return str(self.wme)
