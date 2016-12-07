@@ -379,7 +379,7 @@
 				"flags": []
 			},
 			"sly": {
-				"text": "Right, tell me more about your \'excellent\' witness protection.",
+				"text": "Right, tell me more about your 'excellent' witness protection.",
 				"function": "sly + 0.1",
 				"flags": []
 			},
