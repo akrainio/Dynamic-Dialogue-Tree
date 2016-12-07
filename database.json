@@ -90,7 +90,7 @@
 		"response": {
 			"coop": {
 				"text": "Got a call from a friend...",
-				"function": "coop - .2",
+				"function": "coop",
 				"flags": [
 					"call",
 					"friend",
