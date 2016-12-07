@@ -248,7 +248,8 @@ class Dialog:
             
             self.opening = data["Opening"]
             self.gameover = data["Game Over"]
-            self.gameover_won = data["Won"]
+            self.gameover_won_intense = data["Won Intense"]
+            self.gameover_won_coop = data["Won Coop"]
             self.response = self.opening
         except KeyError:
             print("Error while parsing dialog.")
@@ -262,18 +263,24 @@ class Dialog:
             if action.canPerform(self.wme):
                 self.availableActions[action.text] = action
 
-        won = False
+        won_coop = False
+        won_intense = False
         gameIsOver = True
         for action in self.availableActions.values():
             if not action.canRepeat:
                 gameIsOver = False
-        if "win" in self.wme.cues:
+        if "win_intense" in self.wme.cues:
             gameIsOver = True
-            won = True
+            won_intense = True
+        if "win_coop" in self.wme.cues:
+            gameIsOver = True
+            won_coop = True
         if gameIsOver:
             self.active = False
-            if won:
-                self.response = self.gameover_won
+            if won_coop:
+                self.response = self.gameover_won_coop
+            elif won_intense:
+                self.response = self.gameover_won_intense
             else:
                 self.response = self.gameover
 

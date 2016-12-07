@@ -347,7 +347,7 @@
 				"text": "Yeah, something like that. I'll tell you what I know as long as you keep that lunatic away from me.",
 				"function": "coop",
 				"flags": [
-                  "win"
+                  "win_coop"
                 ]
 			},
 			"sly": {
@@ -390,7 +390,7 @@
 				"text": "This is insane! I won't go down for this, okay? I'll tell you what I know, dammit!",
 				"function": "intense",
 				"flags": [
-                  "win"
+                  "win_intense"
                 ]
 			}
 		},
@@ -513,8 +513,10 @@
 
 "Opening": "You are a police detective interviewing a suspect at the scene of a murder.",
 
-"Game Over": "The suspect pleads the fifth and refuses to give any more information.",
+"Game Over": "I've had it with you.\nThe suspect pleads the fifth and refuses to give any more information.",
 
-"Won": "The suspect has agreed to work with the police. Hopefully justice prevails."
+"Won Intense": "This is insane! I won't go down for this, okay? I'll tell you what I know, dammit!\n\nThe suspect has agreed to work with the police. Hopefully justice prevails.",
+
+"Won Coop": "Yeah, something like that. I'll tell you what I know as long as you keep that lunatic away from me.\n\nThe suspect has agreed to work with the police. Hopefully justice prevails."
 
 }
